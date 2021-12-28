@@ -73,3 +73,5 @@ personas = [{
 print(personas[0]['nacionalidad'])   
 print(personas[1]['conocimientos'])  
 print(personas[0]['conocimientos'][0]['experiencia']) 
+
+#fin de la sesion
