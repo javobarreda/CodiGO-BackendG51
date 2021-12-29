@@ -36,3 +36,26 @@ if (persona['nombre'] == 'Javier' and persona['nacionalidad']=='peruana'):
     print('Si, el nombre de la persona es',(persona['nombre']), 'y su nacionalidad es', persona['nacionalidad'])
 else:
     print('No, el nombre de la persona es',(persona['nombre']), 'y su nacionalidad es', persona['nacionalidad'])
+
+#Vamos con el FOR:
+#Ejemplo:
+
+meses =['Enero','Febrero','Marzo','Abril']
+for mes in meses:
+    if mes == 'Enero':
+        print('Vamos a la playa')
+    print(mes)
+#va de 2 en 2 y de 5 a 10.
+for numero in range(5,10,2):
+    print(numero)
+
+
+# aqui tenemos iteracion de numeros en un rango y con la extensión reptitiva (o se acuantos salen respecto a la extension de elementos en la lsita meses)
+for numero in range(len(meses)):
+    print(numero)
+
+
+# ahora si lo queremos a la mitad de la lista:
+for numero in range(int(len(meses)/2),len(meses)):
+    print(numero)
+#NO SALDRA ERROR porque sale decimal. ENTONCES CONVERTIMOS EN ENTERO.
