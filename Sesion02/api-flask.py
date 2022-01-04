@@ -1,7 +1,10 @@
 from flask import Flask, request
+from flask_cors import CORS
 # el request nos da toda la información del cliente: hora de solicitud, info, método al cual quiere acceder el cliente.
 
 app = Flask(__name__)
+#Si solo le pasamos la aplicacion o la instancia de flask, habilitara los CORS para todos los dominos y para todos los metodos. COn esto ya no tendremos errores.Sin embargo es poco seguro.
+CORS(app=app)
 
 mis_productos = [{
     "nombre": "Paneton con arto bromato",
@@ -59,7 +62,7 @@ def productos():
             'ok':True
         }, 201
 # al ponerle el tipo de dato y al enviar no es el tipo de datos, se rechazará automaticamente la peticion con un 404 NOT FOUND. le hemos metido int para definir el tipo de variable.
-@app.route('/producto/<int:id>', methods=['GET'])
+@app.route('/producto/<int:id>', methods=['GET','PUT'])
 def producto(id):
     if request.method=='GET':
         #Solucion del problema
@@ -75,6 +78,22 @@ def producto(id):
                 'data':None,
                 'message':'El producto no existe:'
             }
+    elif request.method =='PUT':
+        data = request.get_json()
+        if(id < len(mis_productos)):
+            mis_productos[id] = data #sobreescribmos la info en esa posicion con la nueva que nos esta enviando el front
+            return {
+                'ok' : True,
+                'data' : mis_productos[id],
+                'message': 'Producto actualizado exitosamente'
+            },201
+        else:
+            return {
+                'ok' : False,
+                'data' : None,
+                'message': 'El producto con el id {} no existe'.format(id)
+            }
+
 
 if __name__=='__main__':
     app.run(debug=True)
