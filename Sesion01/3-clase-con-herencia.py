@@ -58,3 +58,9 @@ obj_vehiculo_offroad.volar()
 
 # Primeor que el atributo vuela sea privado y luego tener un metodo llamado estado en el cual me indique cual es el estado del vehiculo, que me diga su color, modelo, traccion, velocidad y si esta volando o si est aterrizando
 print(obj_vehiculo_volador.estado())
+
+# isinstance devolvera TRUE si es que la instancia es de la clase
+print(isinstance(obj_vehiculo_offroad, Vehiculo))
+
+# issubclass() aqui vemos si la primera es herencia de la segunda. Saldria FALSE.
+print(issubclass(VehiculoOffRoad, Vehiculo))
